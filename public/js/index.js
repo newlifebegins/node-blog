@@ -21,4 +21,20 @@ $(document).ready(function() {
         $login.hide();
         $register.show();
     })
+    // TODO: 注册
+    $register.delegate("input[type='submit']", "click", () => {
+        $.ajax({
+            type: 'POST',
+            url: '/api/user/register',
+            dataType: 'json',
+            data: {},
+            success: (data) => {
+                console.log(data);
+            },
+            error: (xhr) => {
+                console.log(xhr);
+            }
+        });
+        return false;
+    })
 })
