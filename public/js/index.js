@@ -27,7 +27,11 @@ $(document).ready(function() {
             type: 'POST',
             url: '/api/user/register',
             dataType: 'json',
-            data: {},
+            data: {
+                username: $register.find("input[name='username']").val(),
+                password: $register.find("input[name='password']").val(),
+                repassword: $register.find("input[name='repassword']").val()
+            },
             success: (data) => {
                 console.log(data);
             },
