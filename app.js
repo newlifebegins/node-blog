@@ -23,7 +23,7 @@ app.set('view engine', 'html');
 // TODO: 定义当前应用所使用的模板引擎
 app.engine('html', swig.renderFile);
 // TODO: 数据库连接
-mongoose.connect('mongodb://localhost:27017/blog');
+mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser:true});
 // TODO: 得到数据库连接句柄
 const db = mongoose.connection;
 // TODO: 通过句柄监听mongoose数据库成功事件

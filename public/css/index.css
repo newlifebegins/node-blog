@@ -55,3 +55,12 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .article { width: 800px; padding: 0 10px; }
 .footer{border-top:1px solid #E8E8E8; padding:15px 0;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
 .footer a,.footer a:hover{color:#999}
+.popup { width: 300px; height: 300px; border: 5px solid rgba(0,0,0,0.5); background: #fff; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; padding: 10px 0; display: none; }
+.popup .close { font-size: 14px; line-height: 14px; color: #333; position: absolute; top: 5px; right: 5px; cursor: pointer; }
+.popup .title { text-align: center; font-size: 20px; color: #000; font-weight: bold; line-height: 30px; padding: 5px 0; }
+.popup input { display: block; width: 80%; margin: 10px auto; border: 1px solid #d1d5da; outline: none; background: transparent; height: 30px; line-height: 30px; border-radius: 4px; text-indent: 5px; }
+.popup .label { width: 80%; height: 20px; line-height: 20px; margin: 0 auto; text-align: left; }
+.popup input[type="checkbox"] { display: inline-block; width: 12px; height: 12px; margin: 0; vertical-align: top; position: relative; top: 5px; }
+.popup input[type="submit"] { text-indent: 0; background-color: #28a745; background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%); color: #fff; border-color: rgba(27,31,35,0.35); cursor: pointer; }
+.popup input[type="submit"]:hover { background-color: #269f42; background-image: linear-gradient(-180deg, #2fcb53 0%, #269f42 90%); border-color: rgba(27,31,35,0.5); }
+.popup a { color: #06c; }
