@@ -34,6 +34,16 @@ $(document).ready(function() {
             },
             success: (data) => {
                 console.log(data);
+                if(data.code == 0) {
+                    console.log('注册成功');
+                    $register.hide();
+                    var $tip = $(".tip");
+                    $tip.show().html(data.message);
+                    setTimeout(() => {
+                        $tip.hide();
+                        // $topnav.find(".name").html(`${data.userInfo.username} 您好，欢迎来到我的博客！`)
+                    }, 2000)
+                }
             },
             error: (xhr) => {
                 console.log(xhr);

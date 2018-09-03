@@ -50,10 +50,12 @@ router.post('/user/register', (req, res, next) => {
         password: password
     }).then((userInfo) => {
         if(!userInfo) {
-            user.save((err) => {
+            user.save((err, newUserInfo) => {
+                console.log(newUserInfo);
                 console.log('save status:', err ? 'failed' : 'success');
                 if(!err) {
                     responseData.message = '注册成功';
+                    responseData.userInfo = newUserInfo;
                     res.json(responseData);
                     return;
                 } else {
