@@ -73,4 +73,55 @@ router.post('/user/register', (req, res, next) => {
         }
     })
 });
+/*
+* 登录逻辑
+* 1.code=0 登录成功
+* 2.用户名不能为空  code=1 用户名为空
+* 3.密码不能为空  code=2 密码为空
+* 4.code=3 登录失败
+**/
+router.post('/user/login', (req, res, next) => {
+    var username = req.body.username;
+    var password = req.body.password;
+    if(!username) {
+        responseData.code = 1;
+        responseData.message = '用户名不能为空';
+        res.json(responseData);
+        return;
+    }
+    if(!password) {
+        responseData.code = 2;
+        responseData.message = '密码不能为空';
+        res.json(responseData);
+        return;
+    }
+    User.findOne({
+        username: username,
+        password: password
+    }).then((userInfo) => {
+        if(!userInfo) {
+            responseData.code = 3;
+            responseData.message = '登录失败';
+            res.json(responseData);
+            return;
+        } else {
+            responseData.userInfo = userInfo;
+            responseData.message = '登录成功';
+            res.cookie('userInfo', userInfo);
+            res.json(responseData);
+            return;
+        }
+    })
+});
+/*
+* 退出登录逻辑
+* 1.清空cookie
+**/
+router.get('/user/logout', (req, res, next) => {
+    responseData.code = 0;
+    responseData.message = '退出成功';
+    res.cookie('userInfo', null);
+    res.json(responseData);
+    return;
+});
 module.exports = router;

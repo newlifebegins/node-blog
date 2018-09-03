@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('main/index', {
         title: 'node-blog',
-        content: 'Hello World'
+        userInfo: req.cookies.userInfo
     })
 });
 module.exports = router;

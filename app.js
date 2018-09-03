@@ -6,12 +6,20 @@ const swig = require('swig');
 const mongoose = require('mongoose');
 // TODO: 加载body-parser中间件用于处理post请求
 const bodyParser = require('body-parser');
+// TODO: 加载cookies中间件用于存储cookies
+const cookieParser = require('cookie-parser');
 // TODO: 创建app应用 => NodeJs中的Http.createServer()
 const app = express();
 // TODO: 设置访问端口
 const port = process.env.PORT || 8080;
 // TODO: 设置body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
+// TODO: 设置cookies
+app.use(cookieParser());
+app.use((req, res, next) => {
+    cookieParser();
+    next();
+});
 // TODO: 设置静态文件托管
 app.use('/public', express.static(`${__dirname}/public`));
 app.use('/admin', require('./routers/admin'));

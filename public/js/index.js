@@ -36,13 +36,57 @@ $(document).ready(function() {
                 console.log(data);
                 if(data.code == 0) {
                     console.log('注册成功');
+                    $register.find(".error").hide();
                     $register.hide();
                     var $tip = $(".tip");
                     $tip.show().html(data.message);
                     setTimeout(() => {
                         $tip.hide();
-                        // $topnav.find(".name").html(`${data.userInfo.username} 您好，欢迎来到我的博客！`)
                     }, 2000)
+                } else {
+                    $register.find(".error").show();
+                }
+            },
+            error: (xhr) => {
+                console.log(xhr);
+            }
+        });
+        return false;
+    })
+    // TODO: 登录
+    $login.delegate("input[type='submit']", "click", () => {
+        $.ajax({
+            type: 'POST',
+            url: '/api/user/login',
+            dataType: 'json',
+            data: {
+                username: $login.find("input[name='username']").val(),
+                password: $login.find("input[name='password']").val()
+            },
+            success: (data) => {
+                console.log(data);
+                if(data.code == 0) {
+                    window.location.reload();
+                } else {
+                    $login.find(".error").show();
+                }
+            },
+            error: (xhr) => {
+                console.log(xhr);
+            }
+        });
+        return false;
+    })
+    // TODO: 退出登录
+    $topnav.delegate(".logout", "click", () => {
+        $.ajax({
+            type: 'GET',
+            url: '/api/user/logout',
+            dataType: 'json',
+            data: {},
+            success: (data) => {
+                if(data.code == 0) {
+                    window.location.reload();
                 }
             },
             error: (xhr) => {
