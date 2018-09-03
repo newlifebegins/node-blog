@@ -35,10 +35,12 @@
                     <span class="r_nav">
                         <a title="收藏本站" href="javascript:;">收藏本站</a>
                     </span>
+                    {% if userInfo.isAdmin %}
                     <span class="pipe">|</span>
                     <span class="r_nav">
-                        <a href="javascript:void(0)" title="进入后台">进入后台</a>
+                        <a href="/admin" title="进入后台">进入后台</a>
                     </span>
+                    {% endif %}
                 </div>
             </div>
         </div>
