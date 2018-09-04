@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/Users');
+const Category = require('../models/Categories');
 router.use((req, res, next) => {
     if(!req.cookies.userInfo.isAdmin) {
         res.send('对不起，只有管理员才能进入后台编辑');
@@ -42,10 +43,36 @@ router.get('/user', (req, res, next) => {
     })
 });
 /*
-* 添加用户
+* 分类管理
 **/
-router.post('/user/add', (req, res, next) => {
-    let username = req.body.username;
-    let password = req.body.password;
+router.get('/category', (req, res, next) => {
+    res.render('admin/category/index')
+})
+/*
+* 添加分类
+**/
+router.get('/category/add', (req, res, next) => {
+    res.render('admin/category/add')
+})
+/*
+* 保存新添加的分类
+**/
+router.post('/category/add', (req, res, next) => {
+    console.log(req.body);
+    let catename = req.body.catename;
+    let catedesc = req.body.catedesc;
+    if(!catename) {
+        res.render('admin/error', {
+            message: '分类名称不能为空'
+        })
+    }
+    if(!catedesc) {
+        res.render('admin/error', {
+            message: '分类描述不能为空'
+        })
+    }
+    res.render('admin/success', {
+        message: '分类保存成功'
+    })
 })
 module.exports = router;

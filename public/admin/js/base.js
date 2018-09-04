@@ -15,8 +15,6 @@ $(document).ready(function(){
     $(".item li a").on("click",function(){
         $(".item li a").removeClass("on");
         $(this).addClass("on");
-        $("#iframe").show().attr("src",$(this).attr("href")).next(".list").hide();
-        return false;
     });
 
     // 内容高度

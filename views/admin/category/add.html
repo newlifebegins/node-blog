@@ -1,0 +1,28 @@
+{% extends '../layout.html' %}
+{% block main %}
+<div class="logManage">
+    <div class="breadcrum">
+        <a href="/admin">首页</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="/admin/category">分类管理</a>
+        <i class="fa fa-angle-right"></i>
+        <span>添加分类</span>
+    </div>
+    <div class="list paramList">
+        <form action="" method="post">
+            <div class="paramdl">
+                <dl>
+                    <dt>分类名称</dt>
+                    <dd><input type="text" name="catename" placeholder="请输入分类名称"></dd>
+                    <dt>分类描述</dt>
+                    <dd><input type="text" name="catedesc" placeholder="请输入分类描述"></span></dd>
+                </dl>
+            </div>
+            <div class="publish">
+                <input type="submit" value="保存">
+                <input type="button" value="取消">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

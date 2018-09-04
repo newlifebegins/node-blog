@@ -1,0 +1,38 @@
+{% extends '../layout.html' %}
+{% block main %}
+<div class="logManage">
+    <div class="breadcrum">
+        <a href="/admin">首页</a>
+        <i class="fa fa-angle-right"></i>
+        <span>分类管理</span>
+    </div>
+    <div class="listTable">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox"><label for=""></label></th>
+                    <th class="text_left">ID</th>
+                    <th class="text_left">分类名称</th>
+                    <th class="text_center">创建日期</th>
+                    <th class="text_center">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cate in cateInfo %}
+                <tr>
+                    <td><input type="checkbox"><label for=""></label></td>
+                    <td class="text_left">{{cate._id.toString()}}</td>
+                    <td class="text_left">{{cate.catename}}</td>
+                    <td class="text_center">2017/08/31</td>
+                    <td class="text_left">
+                        <a href="/admin/category/edit">编辑</a>
+                        <a href="/admin/category/delete">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include '../page.html' %}
+    </div>
+</div>
+{% endblock %}
