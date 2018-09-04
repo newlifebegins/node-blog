@@ -1,0 +1,23 @@
+<div class="page">
+    <!-- <a href="/admin/user?page={{page-1}}"><i class="fa fa-angle-left"></i></a> -->
+    <!-- <a href="/admin/user?page=1">1</a> -->
+    <!-- <a href="/admin/user?page=2">2</a>
+    <a href="/admin/user?page=3">3</a>
+    <a href="/admin/user?page=4" class="active">4</a>
+    <a href="/admin/user?page=5">5</a>
+    <a href="/admin/user?page=6">6</a>
+    <a href="/admin/user?page=7">7</a>
+    <a href="/admin/user?page=8">8</a>
+    <span>...</span>
+    <a href="/admin/user?page=21">21</a> -->
+    <!-- <a href="/admin/user?page={{page+1}}"><i class="fa fa-angle-right"></i></a> -->
+    <!-- <span>共 {{pages}} 页</span> -->
+</div>
+<script type="text/javascript">
+    var pages = {{pages}};
+    var html = '';
+    for(var i = 0; i < pages; i ++) {
+        html += `<a href="/admin/user?page=${i+1}">${i+1}</a>`
+    }
+    $(".page").html(`<a href="/admin/user?page={{page-1}}"><i class="fa fa-angle-left"></i></a>${html}<a href="/admin/user?page={{page+1}}"><i class="fa fa-angle-right"></i></a><span>共 {{pages}} 页</span>`);
+</script>

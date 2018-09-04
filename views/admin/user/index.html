@@ -1,0 +1,37 @@
+{% extends '../layout.html' %}
+{% block main %}
+<div class="logManage">
+    <div class="breadcrum">
+        <a href="/admin">首页</a>
+        <i class="fa fa-angle-right"></i>
+        <span>用户管理</span>
+    </div>
+    <div class="listTable">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox"><label for=""></label></th>
+                    <th class="text_left">ID</th>
+                    <th class="text_left">用户名</th>
+                    <th class="text_left">密码</th>
+                    <th class="text_center">创建日期</th>
+                    <th class="text_center">是否管理员</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in userInfo %}
+                <tr>
+                    <td><input type="checkbox"><label for=""></label></td>
+                    <td class="text_left">{{user._id.toString()}}</td>
+                    <td class="text_left">{{user.username}}</td>
+                    <td class="text_left">{{user.password}}</td>
+                    <td class="text_center">2017/08/31</td>
+                    <td class="text_center">{% if user.isAdmin %}是{% else %}否{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include '../page.html' %}
+    </div>
+</div>
+{% endblock %}

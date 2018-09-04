@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="/public/admin/css/base.css">
+    <link rel="stylesheet" href="/public/admin/css/index.css">
+    <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="/public/admin/js/jquery-1.7.1.min.js"></script>
+    <script src="/public/admin/js/base.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1><img src="/public/admin/images/logo.png" width="57" alt="智慧东昌">智慧东昌</h1>
+            <div class="navTop">
+                <ul>
+                    <li><a href="/admin/user" data-type="column-manage">用户管理</a></li>
+                    <li><a href="javascript:void(0)" data-type="tem-manage">模板管理</a></li>
+                    <li><a href="javascript:void(0)" data-type="role-manage">角色管理</a></li>
+                    <li><a href="javascript:void(0)" data-type="doc-manage">文档管理</a></li>
+                    <li><a href="javascript:void(0)" data-type="log-manage">日志管理</a></li>
+                    <li><a href="javascript:void(0)" data-type="root-manage">权限管理</a></li>
+                </ul>
+            </div>
+            <div class="username">
+                <i><!-- <img src="images/username.jpg" alt="用户名"> --></i>{{userInfo.username}}<em></em>
+                <ul class="select_list">
+                    <li>
+                        <a href="javascript:void(0)">退出</a>
+                    </li>
+                    <!-- <li>
+                        <a href="javascript:void(0)">用户管理</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <div class="navLeft">
+            <ul class="column-manage">
+                <li class="item">
+                    <a href="#" class="item_a"><span>用户管理</span><i></i><div class="hide_tip"><strong></strong>用户管理</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="/admin/user/add"><em></em><span>添加用户</span><div class="hide_tip"><strong></strong>添加用户</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="tem-manage" hidden="hidden">
+                <li class="item">
+                    <a href="#" class="item_a"><span>模板管理</span><i></i><div class="hide_tip"><strong></strong>模板管理</div></a>
+                    <ul>
+                        <li class="item_child ic1"><a href="paramSet.html" class="on"><em></em><span>参数设置</span><div class="hide_tip"><strong></strong>参数设置</div></a></li>
+                        <li class="item_child ic2"><a href="#"><em></em><span>伪静态参数</span><div class="hide_tip"><strong></strong>伪静态参数</div></a></li>
+                        <li class="item_child ic3"><a href="#"><em></em><span>扩展变量</span><div class="hide_tip"><strong></strong>扩展变量</div></a></li>
+                        <li class="item_child ic4"><a href="#"><em></em><span>安全参数配置</span><div class="hide_tip"><strong></strong>安全参数配置</div></a></li>
+                        <li class="item_child ic5"><a href="#"><em></em><span>网站防火墙</span><div class="hide_tip"><strong></strong>网站防火墙</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据更新</span><i></i><div class="hide_tip"><strong></strong>数据更新</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="docuManage.html"><em></em><span>文档管理</span><div class="hide_tip"><strong></strong>文档管理</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="role-manage" hidden="hidden">
+                <li class="item">
+                    <a href="#" class="item_a"><span>角色管理</span><i></i><div class="hide_tip"><strong></strong>角色管理</div></a>
+                    <ul>
+                        <li class="item_child ic1"><a href="paramSet.html" class="on"><em></em><span>参数设置</span><div class="hide_tip"><strong></strong>参数设置</div></a></li>
+                        <li class="item_child ic2"><a href="#"><em></em><span>伪静态参数</span><div class="hide_tip"><strong></strong>伪静态参数</div></a></li>
+                        <li class="item_child ic3"><a href="#"><em></em><span>扩展变量</span><div class="hide_tip"><strong></strong>扩展变量</div></a></li>
+                        <li class="item_child ic4"><a href="#"><em></em><span>安全参数配置</span><div class="hide_tip"><strong></strong>安全参数配置</div></a></li>
+                        <li class="item_child ic5"><a href="#"><em></em><span>网站防火墙</span><div class="hide_tip"><strong></strong>网站防火墙</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据更新</span><i></i><div class="hide_tip"><strong></strong>数据更新</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="docuManage.html"><em></em><span>文档管理</span><div class="hide_tip"><strong></strong>文档管理</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="doc-manage" hidden="hidden">
+                <li class="item">
+                    <a href="#" class="item_a"><span>文档管理</span><i></i><div class="hide_tip"><strong></strong>文档管理</div></a>
+                    <ul>
+                        <li class="item_child ic1"><a href="paramSet.html" class="on"><em></em><span>参数设置</span><div class="hide_tip"><strong></strong>参数设置</div></a></li>
+                        <li class="item_child ic2"><a href="#"><em></em><span>伪静态参数</span><div class="hide_tip"><strong></strong>伪静态参数</div></a></li>
+                        <li class="item_child ic3"><a href="#"><em></em><span>扩展变量</span><div class="hide_tip"><strong></strong>扩展变量</div></a></li>
+                        <li class="item_child ic4"><a href="#"><em></em><span>安全参数配置</span><div class="hide_tip"><strong></strong>安全参数配置</div></a></li>
+                        <li class="item_child ic5"><a href="#"><em></em><span>网站防火墙</span><div class="hide_tip"><strong></strong>网站防火墙</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据更新</span><i></i><div class="hide_tip"><strong></strong>数据更新</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="docuManage.html"><em></em><span>文档管理</span><div class="hide_tip"><strong></strong>文档管理</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="log-manage" hidden="hidden">
+                <li class="item">
+                    <a href="#" class="item_a"><span>日志管理</span><i></i><div class="hide_tip"><strong></strong>日志管理</div></a>
+                    <ul>
+                        <li class="item_child ic1"><a href="paramSet.html" class="on"><em></em><span>参数设置</span><div class="hide_tip"><strong></strong>参数设置</div></a></li>
+                        <li class="item_child ic2"><a href="#"><em></em><span>伪静态参数</span><div class="hide_tip"><strong></strong>伪静态参数</div></a></li>
+                        <li class="item_child ic3"><a href="#"><em></em><span>扩展变量</span><div class="hide_tip"><strong></strong>扩展变量</div></a></li>
+                        <li class="item_child ic4"><a href="#"><em></em><span>安全参数配置</span><div class="hide_tip"><strong></strong>安全参数配置</div></a></li>
+                        <li class="item_child ic5"><a href="#"><em></em><span>网站防火墙</span><div class="hide_tip"><strong></strong>网站防火墙</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据更新</span><i></i><div class="hide_tip"><strong></strong>数据更新</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="docuManage.html"><em></em><span>文档管理</span><div class="hide_tip"><strong></strong>文档管理</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="root-manage" hidden="hidden">
+                <li class="item">
+                    <a href="#" class="item_a"><span>权限管理</span><i></i><div class="hide_tip"><strong></strong>权限管理</div></a>
+                    <ul>
+                        <li class="item_child ic1"><a href="paramSet.html" class="on"><em></em><span>参数设置</span><div class="hide_tip"><strong></strong>参数设置</div></a></li>
+                        <li class="item_child ic2"><a href="#"><em></em><span>伪静态参数</span><div class="hide_tip"><strong></strong>伪静态参数</div></a></li>
+                        <li class="item_child ic3"><a href="#"><em></em><span>扩展变量</span><div class="hide_tip"><strong></strong>扩展变量</div></a></li>
+                        <li class="item_child ic4"><a href="#"><em></em><span>安全参数配置</span><div class="hide_tip"><strong></strong>安全参数配置</div></a></li>
+                        <li class="item_child ic5"><a href="#"><em></em><span>网站防火墙</span><div class="hide_tip"><strong></strong>网站防火墙</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据更新</span><i></i><div class="hide_tip"><strong></strong>数据更新</div></a>
+                    <ul>
+                        <li class="item_child ic6"><a href="docuManage.html"><em></em><span>文档管理</span><div class="hide_tip"><strong></strong>文档管理</div></a></li>
+                        <li class="item_child ic6"><a href="logManage.html"><em></em><span>日志管理</span><div class="hide_tip"><strong></strong>日志管理</div></a></li>
+                        <li class="item_child ic6"><a href="edit.html"><em></em><span>新建问题</span><div class="hide_tip"><strong></strong>新建问题</div></a></li>
+                        <li class="item_child ic7"><a href="videoManage.html"><em></em><span>视频管理</span><div class="hide_tip"><strong></strong>视频管理</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>数据表与系统模型</span><i></i><div class="hide_tip"><strong></strong>数据表与系统模型</div></a>
+                    <ul>
+                        <li class="item_child ic8"><a href="#"><em></em><span>公告管理</span><div class="hide_tip"><strong></strong>公告管理</div></a></li>
+                        <li class="item_child ic9"><a href="#"><em></em><span>FAQ管理</span><div class="hide_tip"><strong></strong>FAQ管理</div></a></li>
+                        <li class="item_child ic10"><a href="#"><em></em><span>服务指南</span><div class="hide_tip"><strong></strong>服务指南</div></a></li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="#" class="item_a"><span>计划任务</span><i></i><div class="hide_tip"><strong></strong>计划任务</div></a>
+                    <ul>
+                        <li class="item_child ic11"><a href="#"><em></em><span>用户信息</span><div class="hide_tip"><strong></strong>用户信息</div></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="btn"><i></i></div>
+        </div>
+    </aside>
+    <section>
+        <div class="content">
+            {% block main %}{% endblock %}
+        </div>
+    </section>
+
+</body>
+</html>
