@@ -49,13 +49,20 @@
         <div class="banner">
             <img src="/public/images/node.jpg" alt="NodeJS">
         </div>
+        <nav class="nav">
+            <ul class="wp cl">
+                {% for cate in cateInfo %}
+                <li><a href="javascript:;">{{cate.catename}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
         <div class="container-fluid">
             <div class="wp cl">
                 <aside id="aside" class="aside l">
                     aside
                 </aside>
                 <article id="article" class="article r">
-                    {{content}}
+                    content
                 </article>
             </div>
         </div>

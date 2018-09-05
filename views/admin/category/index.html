@@ -13,8 +13,9 @@
                     <th><input type="checkbox"><label for=""></label></th>
                     <th class="text_left">ID</th>
                     <th class="text_left">分类名称</th>
+                    <th class="text_left">分类描述</th>
                     <th class="text_center">创建日期</th>
-                    <th class="text_center">操作</th>
+                    <th class="text_left">操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,10 +24,11 @@
                     <td><input type="checkbox"><label for=""></label></td>
                     <td class="text_left">{{cate._id.toString()}}</td>
                     <td class="text_left">{{cate.catename}}</td>
+                    <td class="text_left">{{cate.catedesc}}</td>
                     <td class="text_center">2017/08/31</td>
                     <td class="text_left">
-                        <a href="/admin/category/edit">编辑</a>
-                        <a href="/admin/category/delete">删除</a>
+                        <a href="/admin/category/edit?id={{cate._id.toString()}}"><i class="tip">编辑</i></a>
+                        <a href="/admin/category/delete?id={{cate._id.toString()}}" class="delete"><i class="tip">删除</i></a>
                     </td>
                 </tr>
                 {% endfor %}

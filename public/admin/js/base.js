@@ -66,17 +66,17 @@ $(document).ready(function(){
             parent.layer.closeAll();
         })
     });
-    $(".delete").click(function(){
-        var _this = $(this);
-        layer.confirm('确定要删除吗？', {
-            btn: ['确定','取消'],closeBtn: 0,title: false
-        }, function(index){
-            _this.parents("tr").remove();
-            layer.close(index);
-        }, function(index){
-            layer.close(index);
-        });
-    });
+    // $(".delete").click(function(){
+    //     var _this = $(this);
+    //     layer.confirm('确定要删除吗？', {
+    //         btn: ['确定','取消'],closeBtn: 0,title: false
+    //     }, function(index){
+    //         _this.parents("tr").remove();
+    //         layer.close(index);
+    //     }, function(index){
+    //         layer.close(index);
+    //     });
+    // });
 
     // 日志管理
     $(".listTable input[type='checkbox']").on("click",function(){

@@ -46,7 +46,24 @@ router.get('/user', (req, res, next) => {
 * 分类管理
 **/
 router.get('/category', (req, res, next) => {
-    res.render('admin/category/index')
+    Category.countDocuments().then((count) => {
+        let limit = 10;
+        let pages = Math.ceil(count / limit);
+        let page = parseInt(req.query.page || 1);
+        page = Math.min(page, pages);
+        page = Math.max(page, 1);
+        let skip = (page - 1) * limit;
+        Category.find().sort({_id:-1}).limit(limit).skip(skip).then((cateInfo) => {
+            res.render('admin/category/index', {
+                cateInfo: cateInfo,
+                limit: limit,
+                count: count,
+                skip: skip,
+                page: page,
+                pages: pages
+            });
+        })
+    })
 })
 /*
 * 添加分类
@@ -58,21 +75,144 @@ router.get('/category/add', (req, res, next) => {
 * 保存新添加的分类
 **/
 router.post('/category/add', (req, res, next) => {
-    console.log(req.body);
     let catename = req.body.catename;
     let catedesc = req.body.catedesc;
     if(!catename) {
         res.render('admin/error', {
             message: '分类名称不能为空'
         })
+        return;
     }
     if(!catedesc) {
         res.render('admin/error', {
             message: '分类描述不能为空'
         })
+        return;
     }
-    res.render('admin/success', {
-        message: '分类保存成功'
+    Category.findOne({
+        catename: catename
+    }).then((cateInfo) => {
+        if(cateInfo) {
+            res.render('admin/error', {
+                message: '分类名称已经存在'
+            })
+            return;
+        } else {
+            new Category({
+                catename: catename,
+                catedesc: catedesc
+            }).save((err, newCategory) => {
+                if(err) {
+                    res.render('admin/error', {
+                        message: '分类保存失败'
+                    })
+                    return;
+                } else {
+                    res.render('admin/success', {
+                        message: '分类保存成功'
+                    })
+                }
+            })
+        }
     })
+})
+/*
+* 分类修改
+**/
+router.get('/category/edit', (req, res, next) => {
+    let id = req.query.id || '';
+    Category.findOne({
+        _id: id
+    }).then((cateInfo) => {
+        if(cateInfo) {
+            res.render('admin/category/edit', {
+                cateInfo: cateInfo
+            })
+            return;
+        } else {
+            res.render('admin/error', {
+                message: '分类信息不存在'
+            })
+            return;
+        }
+    });
+})
+/*
+* 分类修改保存
+**/
+router.post('/category/edit', (req, res, next) => {
+    let id = req.query.id || '';
+    let catename = req.body.catename;
+    let catedesc = req.body.catedesc;
+    if(!catename) {
+        res.render('admin/error', {
+            message: '分类名称不能为空'
+        })
+        return;
+    }
+    if(!catedesc) {
+        res.render('admin/error', {
+            message: '分类描述不能为空'
+        })
+        return;
+    }
+    Category.findOne({
+        _id: id
+    }).then((cateInfo) => {
+        if(cateInfo) {
+            if(catename == cateInfo.catename) {
+                res.render('admin/success', {
+                    message: '分类修改成功'
+                })
+                return;
+            } else {
+                return Category.findOne({
+                    _id: {$ne: id},
+                    catename: catename
+                })
+            }
+        } else {
+            res.render('admin/error', {
+                message: '分类信息不存在'
+            })
+            return;
+        }
+    }).then((sameCategory) => {
+        if(sameCategory) {
+            res.render('admin/error', {
+                message: '已经存在同名分类'
+            })
+            return;
+        } else {
+            Category.update({
+                _id: id
+            }, {
+                catename: catename
+            }).then((editCategory) => {
+                if(editCategory) {
+                    res.render('admin/success', {
+                        message: '分类修改成功'
+                    })
+                    return;
+                }
+            })
+        }
+    })
+})
+/*
+* 删除分类
+**/
+router.get('/category/delete', (req, res, next) => {
+    let id = req.query.id || '';
+    Category.deleteOne({
+        _id: id
+    }).then((err) => {
+        if(err.ok) {
+            res.render('admin/success', {
+                message: '删除成功'
+            })
+            return;
+        }
+    });
 })
 module.exports = router;
