@@ -195,7 +195,7 @@ html,body { background-color: #f4f7f9; }
 .paramList .paramdl dt { float: left; font-size: 14px; color: #010101; line-height: 40px; }
 .paramList .paramdl dd { margin-bottom: 10px; margin-left: 126px; line-height: 40px; }
 .paramList .paramdl dd span { font-size: 14px; color: #a0a0a0; margin-left: 16px; }
-.paramList .paramdl dd input[type="text"] { font-size: 14px; color: #010101; width: 414px; height: 38px; text-indent: 12px; line-height: 38px; border: 1px solid #e5e5e5; }
+.paramList .paramdl dd input[type="text"],.paramList .paramdl dd select { font-size: 14px; color: #010101; width: 414px; height: 38px; text-indent: 12px; line-height: 38px; border: 1px solid #e5e5e5; }
 .paramList .paramdl dd label { display: inline-block; margin-right: 52px; font-size: 14px; line-height: 20px; color: #010101; position: relative; padding-left: 25px; }
 .paramList .paramdl dd input[type="radio"] { width: 20px; height: 20px; position: absolute; left: 0; top: 0; z-index: 2; opacity: 0; }
 .paramList .paramdl dd input[type="radio"] + i { display: inline-block; width: 16px; height: 16px; background-color: #fff; border-radius: 50%; border: 2px solid #e3e4e8; position: absolute; top: 0; left: 0; }

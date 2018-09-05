@@ -6,18 +6,26 @@
         <i class="fa fa-angle-right"></i>
         <a href="/admin/content">内容管理</a>
         <i class="fa fa-angle-right"></i>
-        <span>内容修改</span>
+        <span>添加内容</span>
     </div>
     <div class="list paramList">
         <form action="" method="post">
             <div class="paramdl">
                 <dl>
+                    <dt>内容分类</dt>
+                    <dd>
+                        <select class="" name="">
+                            {% for cate in cateInfo %}
+                            <option value="{{cate._id}}">{{cate.catename}}</option>
+                            {% endfor %}
+                        </select>
+                    </dd>
                     <dt>内容标题</dt>
-                    <dd><input type="text" name="contitle" value="{{conInfo.contitle}}" placeholder="请输入内容标题"></dd>
+                    <dd><input type="text" name="contitle" placeholder="请输入内容标题"></dd>
                     <dt>内容简介</dt>
-                    <dd><input type="text" name="condesc" value="{{conInfo.condesc}}" placeholder="请输入内容描述"></span></dd>
+                    <dd><input type="text" name="condesc" placeholder="请输入内容简介"></span></dd>
                     <dt>内容</dt>
-                    <dd><input type="text" name="content" value="{{conInfo.content}}" placeholder="请输入内容"></span></dd>
+                    <dd><input type="text" name="content" placeholder="请输入内容"></span></dd>
                 </dl>
             </div>
             <div class="publish">

@@ -4,20 +4,18 @@
     <div class="breadcrum">
         <a href="/admin">首页</a>
         <i class="fa fa-angle-right"></i>
-        <a href="/admin/content">内容管理</a>
+        <a href="/admin/category">分类管理</a>
         <i class="fa fa-angle-right"></i>
-        <span>内容修改</span>
+        <span>分类修改</span>
     </div>
     <div class="list paramList">
         <form action="" method="post">
             <div class="paramdl">
                 <dl>
-                    <dt>内容标题</dt>
-                    <dd><input type="text" name="contitle" value="{{conInfo.contitle}}" placeholder="请输入内容标题"></dd>
-                    <dt>内容简介</dt>
-                    <dd><input type="text" name="condesc" value="{{conInfo.condesc}}" placeholder="请输入内容描述"></span></dd>
-                    <dt>内容</dt>
-                    <dd><input type="text" name="content" value="{{conInfo.content}}" placeholder="请输入内容"></span></dd>
+                    <dt>分类名称</dt>
+                    <dd><input type="text" name="catename" value="{{cateInfo.catename}}" placeholder="请输入分类名称"></dd>
+                    <dt>分类描述</dt>
+                    <dd><input type="text" name="catedesc" value="{{cateInfo.catedesc}}" placeholder="请输入分类描述"></span></dd>
                 </dl>
             </div>
             <div class="publish">
