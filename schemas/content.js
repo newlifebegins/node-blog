@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const conSchema = new Schema({
     category: {
         type: Schema.Types.ObjectId,    // 类型
-        ref: 'Content'   // 引用
+        ref: 'Category'   // 引用
     },
     contitle: String,
     condesc: String,

@@ -14,9 +14,9 @@
                 <dl>
                     <dt>内容分类</dt>
                     <dd>
-                        <select class="" name="">
+                        <select class="" name="category">
                             {% for cate in cateInfo %}
-                            <option value="{{cate._id}}">{{cate.catename}}</option>
+                            <option value="{{cate._id.toString()}}">{{cate.catename}}</option>
                             {% endfor %}
                         </select>
                     </dd>

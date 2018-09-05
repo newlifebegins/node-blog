@@ -218,6 +218,7 @@ router.get('/category/delete', (req, res, next) => {
 })
 /*
 * 内容管理
+* populate  关联另外一张表结构
 **/
 router.get('/content', (req, res, next) => {
     Content.countDocuments().then((count) => {
@@ -227,7 +228,7 @@ router.get('/content', (req, res, next) => {
         page = Math.min(page, pages);
         page = Math.max(page, 1);
         let skip = (page - 1) * limit;
-        Content.find().sort({_id:-1}).limit(limit).skip(skip).then((conInfo) => {
+        Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').then((conInfo) => {
             res.render('admin/content/index', {
                 conInfo: conInfo,
                 limit: limit,
@@ -255,9 +256,16 @@ router.get('/content/add', (req, res, next) => {
 * 保存新添加的内容
 **/
 router.post('/content/add', (req, res, next) => {
+    let category = req.body.category;
     let contitle = req.body.contitle;
     let condesc = req.body.condesc;
     let content = req.body.content;
+    if(!category) {
+        res.render('admin/error', {
+            message: '内容分类不能为空'
+        })
+        return;
+    }
     if(!contitle) {
         res.render('admin/error', {
             message: '内容标题不能为空'
@@ -276,31 +284,23 @@ router.post('/content/add', (req, res, next) => {
         })
         return;
     }
-    // Category.findOne({
-    //     catename: catename
-    // }).then((cateInfo) => {
-    //     if(cateInfo) {
-    //         res.render('admin/error', {
-    //             message: '分类名称已经存在'
-    //         })
-    //         return;
-    //     } else {
-    //         new Category({
-    //             catename: catename,
-    //             catedesc: catedesc
-    //         }).save((err, newCategory) => {
-    //             if(err) {
-    //                 res.render('admin/error', {
-    //                     message: '分类保存失败'
-    //                 })
-    //                 return;
-    //             } else {
-    //                 res.render('admin/success', {
-    //                     message: '分类保存成功'
-    //                 })
-    //             }
-    //         })
-    //     }
-    // })
+    new Content({
+        category: category,
+        contitle: contitle,
+        condesc: condesc,
+        content: content
+    }).save((err, newContent) => {
+        if(err) {
+            res.render('admin/error', {
+                message: '内容保存失败'
+            })
+            return;
+        } else {
+            res.render('admin/success', {
+                message: '内容保存成功'
+            })
+            return;
+        }
+    })
 })
 module.exports = router;
