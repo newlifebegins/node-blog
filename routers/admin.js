@@ -38,7 +38,8 @@ router.get('/user', (req, res, next) => {
                 count: count,
                 skip: skip,
                 page: page,
-                pages: pages
+                pages: pages,
+                param: 'user'
             });
         })
     })
@@ -61,7 +62,8 @@ router.get('/category', (req, res, next) => {
                 count: count,
                 skip: skip,
                 page: page,
-                pages: pages
+                pages: pages,
+                param: 'category'
             });
         })
     })
@@ -235,7 +237,8 @@ router.get('/content', (req, res, next) => {
                 count: count,
                 skip: skip,
                 page: page,
-                pages: pages
+                pages: pages,
+                param: 'content'
             });
         })
     })

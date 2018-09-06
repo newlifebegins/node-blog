@@ -57,7 +57,12 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .nav li a { display: block; padding: 10px 20px; color: #fff; font-size: 16px; }
 .nav li.active a,.nav li a:hover { background: #7b89b3; text-decoration: none; }
 .aside { width: 200px; padding: 0 10px; }
-.article { width: 800px; padding: 0 10px; }
+.article { width: 800px; padding: 10px; }
+.article dl { border-bottom: 1px solid #E8E8E8; padding: 10px 0; }
+.article dt { float: left; width: 200px; height: 100px; border: 1px solid #E8E8E8; background: #ccc; }
+.article dd { margin-left: 220px; margin-bottom: 10px; }
+.article dd h5 { font-size: 18px; font-weight: 600; }
+.article dd p { font-size: 14px; line-height: 22px; margin-top: 20px; }
 .footer{border-top:1px solid #E8E8E8; padding:15px 0;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
 .footer a,.footer a:hover{color:#999}
 .popup { width: 300px; height: 300px; border: 5px solid rgba(0,0,0,0.5); background: #fff; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; padding: 10px 0; display: none; }
@@ -71,3 +76,8 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .popup a { color: #06c; }
 .tip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 10px 20px; background: rgba(0,0,0,0.8); border-radius: 4px; color: #fff; display: none; }
 .error { display: block; line-height: 30px; font-size: 12px; color: #f00; font-style: normal; display: none; }
+/*分页*/
+.page { text-align: center; padding: 40px 0; }
+.page a { display: inline-block; width: 20px; height: 20px; text-align: center; line-height: 20px; border-radius: 50%; background-color: transparent; font-size: 14px; color: #555d64; }
+.page a.active { background-color: #03a9f4; color: #fff; }
+.page span { font-size: 14px; color: #000; margin: 0 5px; }

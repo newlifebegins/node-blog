@@ -168,7 +168,7 @@ html,body { background-color: #f4f7f9; }
 .logManage .listTable table th input[type="checkbox"] + label,.logManage .listTable table td input[type="checkbox"] + label { width: 18px; height: 18px; border-radius: 6px; border: 2px solid #a4a9ae; position: absolute; left: 50%; top: 50%; margin-left: -9px; margin-top: -9px; box-sizing: border-box; }
 .logManage .listTable table th input[type="checkbox"] + label.on_check,.logManage .listTable table td input[type="checkbox"] + label.on_check { background: url(../images/on_check.png) no-repeat center; }
 .logManage .listTable table th { line-height: 48px; border-bottom: 2px solid #e3e4e8; font-size: 14px; color: #517486; font-weight: bold; }
-.logManage .listTable table td { line-height: 58px; font-size: 14px; color: #78909c; }
+.logManage .listTable table td { max-width: 230px; line-height: 24px; font-size: 14px; color: #78909c; padding: 17px 0; }
 .logManage .listTable table th:first-child,.logManage .listTable table td:first-child { width: 5%; text-align: center; }
 .logManage .listTable table td.lock { color: #ed5565; }
 .logManage .listTable table td.track { color: #5dc9e6; }

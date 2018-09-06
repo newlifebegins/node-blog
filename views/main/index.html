@@ -7,6 +7,8 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/index.css">
+    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/index.js"></script>
 </head>
 <body>
     <header>
@@ -62,7 +64,20 @@
                     aside
                 </aside>
                 <article id="article" class="article r">
-                    content
+                    <div class="content">
+                        {% for content in conInfo %}
+                        <dl class="cl">
+                            <dt>
+                                <img src="" alt="">
+                            </dt>
+                            <dd>
+                                <h5>{{content.contitle}}</h5>
+                                <p>{{content.condesc}}</p>
+                            </dd>
+                        </dl>
+                        {% endfor %}
+                        {% include './page.html' %}
+                    </div>
                 </article>
             </div>
         </div>
@@ -117,7 +132,6 @@
         </form>
     </div>
     <div class="tip"></div>
-    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/public/js/index.js"></script>
+
 </body>
 </html>
