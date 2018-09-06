@@ -306,4 +306,96 @@ router.post('/content/add', (req, res, next) => {
         }
     })
 })
+/*
+* 内容修改
+**/
+router.get('/content/edit', (req, res, next) => {
+    let id = req.query.id || '';
+    Content.findOne({
+        _id: id
+    }).populate('category').then((conInfo) => {
+        if(conInfo) {
+            res.render('admin/content/edit', {
+                conInfo: conInfo
+            })
+            return;
+        } else {
+            res.render('admin/error', {
+                message: '内容信息不存在'
+            })
+            return;
+        }
+    });
+})
+/*
+* 内容修改保存
+**/
+router.post('/content/edit', (req, res, next) => {
+    let category = req.body.category;
+    let id = req.query.id || '';
+    let contitle = req.body.contitle;
+    let condesc = req.body.condesc;
+    let content = req.body.content;
+    if(!category) {
+        res.render('admin/error', {
+            message: '内容分类不能为空'
+        })
+        return;
+    }
+    if(!contitle) {
+        res.render('admin/error', {
+            message: '内容标题不能为空'
+        })
+        return;
+    }
+    if(!condesc) {
+        res.render('admin/error', {
+            message: '内容简介不能为空'
+        })
+        return;
+    }
+    if(!content) {
+        res.render('admin/error', {
+            message: '内容不能为空'
+        })
+        return;
+    }
+    Content.findOne({
+        _id: id
+    }).then((conInfo) => {
+        if(conInfo) {
+            Content.update({
+                _id: id
+            }, {
+                contitle: contitle,
+                condesc: condesc,
+                content: content
+            }).then((editContent) => {
+                if(editContent) {
+                    res.render('admin/success', {
+                        message: '内容修改成功'
+                    })
+                    return;
+                }
+            })
+        }
+    })
+})
+/*
+* 删除分类
+**/
+router.get('/content/delete', (req, res, next) => {
+    let id = req.query.id || '';
+    Content.deleteOne({
+        _id: id
+    }).then((err) => {
+        if(err.ok) {
+            res.render('admin/success', {
+                message: '删除成功'
+            })
+            return;
+        }
+    });
+})
+
 module.exports = router;
