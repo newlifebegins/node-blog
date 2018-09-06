@@ -15,7 +15,9 @@
                     <th class="text_left">标题</th>
                     <th class="text_left">简介</th>
                     <th class="text_left">内容</th>
+                    <th class="text_left">作者</th>
                     <th class="text_center">创建日期</th>
+                    <th class="text_center">阅读量</th>
                     <th class="text_left">操作</th>
                 </tr>
             </thead>
@@ -27,7 +29,9 @@
                     <td class="text_left">{{content.contitle}}</td>
                     <td class="text_left">{{content.condesc}}</td>
                     <td class="text_left">{{content.content}}</td>
-                    <td class="text_center">2017/08/31</td>
+                    <td class="text_left">{{content.user.username}}</td>
+                    <td class="text_center">{{content.addTime|date}}</td>
+                    <td class="text_center">{{content.views}}</td>
                     <td class="text_left">
                         <a href="/admin/content/edit?id={{content._id.toString()}}"><i class="tip">编辑</i></a>
                         <a href="/admin/content/delete?id={{content._id.toString()}}" class="delete"><i class="tip">删除</i></a>

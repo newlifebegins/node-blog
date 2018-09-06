@@ -230,7 +230,8 @@ router.get('/content', (req, res, next) => {
         page = Math.min(page, pages);
         page = Math.max(page, 1);
         let skip = (page - 1) * limit;
-        Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').then((conInfo) => {
+        Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').populate('user').then((conInfo) => {
+            console.log(conInfo);
             res.render('admin/content/index', {
                 conInfo: conInfo,
                 limit: limit,
