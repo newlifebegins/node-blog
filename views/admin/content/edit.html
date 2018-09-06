@@ -19,9 +19,13 @@
                     <dt>内容标题</dt>
                     <dd><input type="text" name="contitle" value="{{conInfo.contitle}}" placeholder="请输入内容标题"></dd>
                     <dt>内容简介</dt>
-                    <dd><input type="text" name="condesc" value="{{conInfo.condesc}}" placeholder="请输入内容简介"></span></dd>
+                    <dd>
+                        <textarea name="condesc" rows="8" cols="80" placeholder="请输入内容简介">{{conInfo.condesc}}</textarea>
+                    </dd>
                     <dt>内容</dt>
-                    <dd><input type="text" name="content" value="{{conInfo.content}}" placeholder="请输入内容"></span></dd>
+                    <dd>
+                        <textarea name="content" rows="8" cols="80" placeholder="请输入内容">{{conInfo.content}}</textarea>
+                    </dd>
                 </dl>
             </div>
             <div class="publish">
