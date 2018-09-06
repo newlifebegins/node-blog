@@ -230,8 +230,7 @@ router.get('/content', (req, res, next) => {
         page = Math.min(page, pages);
         page = Math.max(page, 1);
         let skip = (page - 1) * limit;
-        Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').populate('user').then((conInfo) => {
-            console.log(conInfo);
+        Content.find().sort({_id:-1}).limit(limit).skip(skip).populate(['category', 'user']).then((conInfo) => {
             res.render('admin/content/index', {
                 conInfo: conInfo,
                 limit: limit,
@@ -261,6 +260,7 @@ router.get('/content/add', (req, res, next) => {
 **/
 router.post('/content/add', (req, res, next) => {
     let category = req.body.category;
+    let user = req.cookies.userInfo._id.toString();
     let contitle = req.body.contitle;
     let condesc = req.body.condesc;
     let content = req.body.content;
@@ -290,6 +290,7 @@ router.post('/content/add', (req, res, next) => {
     }
     new Content({
         category: category,
+        user: user,
         contitle: contitle,
         condesc: condesc,
         content: content

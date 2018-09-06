@@ -30,7 +30,7 @@
                     <td class="text_left">{{content.condesc}}</td>
                     <td class="text_left">{{content.content}}</td>
                     <td class="text_left">{{content.user.username}}</td>
-                    <td class="text_center">{{content.addTime|date}}</td>
+                    <td class="text_center">{{content.addTime|date('Y-m-d h:i:s', -8 * 60)}}</td>
                     <td class="text_center">{{content.views}}</td>
                     <td class="text_left">
                         <a href="/admin/content/edit?id={{content._id.toString()}}"><i class="tip">编辑</i></a>
