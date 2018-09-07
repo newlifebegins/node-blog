@@ -6,8 +6,8 @@
             <img src="" alt="">
         </dt>
         <dd>
-            <h5>{{content.contitle}}</h5>
-            <p>{{content.condesc}}</p>
+            <h5>{{content.contitle}} <span>{{content.addTime|date('Y-m-d h:i:s', -8 * 60)}}</span></h5>
+            <p>{{content.condesc}} [<a href="/show?id={{content._id.toString()}}" target="_blank">详情</a>]</p>
         </dd>
     </dl>
     {% endfor %}

@@ -14,15 +14,15 @@
     <header>
         <div class="topnav">
             <div class="wp cl">
-                {% if userInfo._id %}
-                <div class="l name">{{userInfo.username}}您好，欢迎来到我的博客！</div>
+                {% if conInfo.user._id %}
+                <div class="l name">{{conInfo.user.username}}您好，欢迎来到我的博客！</div>
                 {% else %}
                 <div class="l name">您好，欢迎来到我的博客！</div>
                 {% endif %}
                 <div class="r">
                     <span class="r_nav">
                         [
-                        {% if userInfo._id %}
+                        {% if conInfo.user._id %}
                         <a rel="nofollow" href="javascript:void(0)" class="logout">退出</a>
                         {% else %}
                         <a rel="nofollow" href="javascript:void(0)" class="login">登录</a>
@@ -37,7 +37,7 @@
                     <span class="r_nav">
                         <a title="收藏本站" href="javascript:;">收藏本站</a>
                     </span>
-                    {% if userInfo.isAdmin %}
+                    {% if conInfo.user.isAdmin %}
                     <span class="pipe">|</span>
                     <span class="r_nav">
                         <a href="/admin" title="进入后台">进入后台</a>
@@ -48,28 +48,34 @@
         </div>
     </header>
     <section>
-        <div class="banner">
-            <img src="/public/images/node.jpg" alt="NodeJS">
-        </div>
-        <nav class="nav">
-            <ul class="wp cl">
-                <li><a href="/">首页</a></li>
-                {% for cate in cateInfo %}
-                <li><a href="/?category={{cate._id.toString()}}">{{cate.catename}}</a></li>
-                {% endfor %}
-            </ul>
-        </nav>
         <div class="container-fluid">
             <div class="wp cl">
-                <aside id="aside" class="aside l">
-                    aside
-                </aside>
-                <article id="article" class="article r">
-                    <div class="content">
-                        {% block content %}{% endblock %}
-                        {% include './page.html' %}
+                <div class="show">
+                    <h1>{{conInfo.contitle}}</h1>
+                    <h2>
+                        作者：<span>{{conInfo.user.username}}</span>
+                        时间：<span>{{conInfo.addTime|date('Y-m-d h:i:s', -8 * 60)}}</span>
+                        阅读量：<span>{{conInfo.views}}</span>
+                    </h2>
+                    <p>{{conInfo.content}}</p>
+                </div>
+                <div class="comment">
+                    <h1>评论</h1>
+                    <form action="" method="post">
+                        <textarea name="comment" rows="8" cols="80" placeholder="写点东西。。。。"></textarea>
+                        <input type="submit" name="submit" value="畅言一下">
+                    </form>
+                    <h2>最新评论</h2>
+                    <div class="list">
+                        <dl>
+                            <dt><img src="" alt=""></dt>
+                            <dd>
+                                <h5 class="name">wangwei</h5>
+                                <p>这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容这是一段评论内容</p>
+                            </dd>
+                        </dl>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>

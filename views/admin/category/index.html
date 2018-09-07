@@ -25,7 +25,7 @@
                     <td class="text_left">{{cate._id.toString()}}</td>
                     <td class="text_left">{{cate.catename}}</td>
                     <td class="text_left">{{cate.catedesc}}</td>
-                    <td class="text_center">2017/08/31</td>
+                    <td class="text_center">{{cate.addTime|date('Y-m-d h:i:s', -8 * 60)}}</td>
                     <td class="text_left">
                         <a href="/admin/category/edit?id={{cate._id.toString()}}"><i class="tip">编辑</i></a>
                         <a href="/admin/category/delete?id={{cate._id.toString()}}" class="delete"><i class="tip">删除</i></a>

@@ -62,7 +62,26 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .article dt { float: left; width: 200px; height: 100px; border: 1px solid #E8E8E8; background: #ccc; }
 .article dd { margin-left: 220px; margin-bottom: 10px; }
 .article dd h5 { font-size: 18px; font-weight: 600; }
+.article dd h5>span { float: right; font-size: 14px; color: #ccc; font-weight: normal; }
 .article dd p { font-size: 14px; line-height: 22px; margin-top: 20px; }
+.article dd a { color: #f00; }
+.show { padding: 50px 10px; }
+.show h1 { font-size: 30px; font-weight: bold; color: #000; text-align: center; }
+.show h2 { font-size: 12px; font-weight: normal; color: #ccc; text-align: center; margin: 10px 0 20px 0;}
+.show h2 span { margin: 0 10px 0 5px; color: #1aafe8; }
+.show p { text-indent: 2em; font-size: 16px; color: #000; line-height: 30px; }
+.comment { margin: 10px 0; }
+.comment h1 { font-size: 20px; text-align: left; }
+.comment h2 { font-size: 18px; color: #4398ed; text-align: left; position: relative; padding-left: 15px; margin: 20px 0; }
+.comment h2::before { content: ''; width: 4px; height: 16px; background: #4398ed; position: absolute; left: 0; top: 50%; margin-top: -8px; }
+.comment form { text-align: right; }
+.comment textarea { width: 100%; padding: 10px; border: 1px solid #d7d7d7; border-radius: 4px; margin: 10px 0; }
+.comment input[type="submit"] { padding: 5px 20px; border-radius: 4px; text-align: center; color: #fff; font-size: 14px; background: #357fed; border: 1px solid #357fed; margin-bottom: 20px; cursor: pointer; }
+.comment .list dl { border-bottom: 1px dashed #e5e5e5; padding: 13px 0 11px; }
+.comment .list dt { float: left; width: 42px; height: 42px; border-radius: 50%; background-color: #ccc; }
+.comment .list dd { margin-left: 60px; margin-bottom: 10px; }
+.comment .list dd .name { color: #4398ed; font-size: 12px; }
+.comment .list dd p { color: #000; font-size: 12px; }
 .footer{border-top:1px solid #E8E8E8; padding:15px 0;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
 .footer a,.footer a:hover{color:#999}
 .popup { width: 300px; height: 300px; border: 5px solid rgba(0,0,0,0.5); background: #fff; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; padding: 10px 0; display: none; }

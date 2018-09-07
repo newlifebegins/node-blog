@@ -19,6 +19,7 @@ const conSchema = new Schema({
     },
     contitle: String,
     condesc: String,
-    content:  String
+    content:  String,
+    comment: String
 });
 module.exports = conSchema;
