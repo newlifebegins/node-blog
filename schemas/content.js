@@ -20,6 +20,9 @@ const conSchema = new Schema({
     contitle: String,
     condesc: String,
     content:  String,
-    comment: String
+    comment: {
+        type: Array,
+        default: ''
+    }
 });
 module.exports = conSchema;
