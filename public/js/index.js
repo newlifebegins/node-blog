@@ -95,4 +95,47 @@ $(document).ready(function() {
         });
         return false;
     })
+    // TODO: 评论
+    $(".comment").delegate("input[type='submit']", "click", () => {
+        $.ajax({
+            type: 'POST',
+            url: '/api/content/comment',
+            dataType: 'json',
+            data: {
+                id: $(".comment").find("input[name='contentId']").val(),
+                comment: $(".comment").find("textarea[name='comment']").val()
+            },
+            success: (data) => {
+                var data = data.data.comment.reverse();
+                $(".comment").find("textarea[name='comment']").val('');
+                renderComment(data);
+            },
+            error: (xhr) => {
+                console.log(xhr);
+            }
+        })
+        return false;
+    })
+    $.ajax({
+        type: 'GET',
+        url: '/api/show',
+        data: {
+            id: $(".comment").find("input[name='contentId']").val()
+        },
+        dataType: 'json',
+        success: (data) => {
+            var data = data.data.comment.reverse();
+            renderComment(data)
+        },
+        error: (xhr) => {
+            console.log(xhr);
+        }
+    })
+    var renderComment = (data) => {
+        var html = '';
+        for(var i = 0; i < data.length; i ++) {
+            html += `<dl><dt><img src="" alt=""></dt><dd><h5 class="name">${data[i]['username']}</h5><p>${data[i]['comment']}</p></dd></dl>`
+        }
+        $(".comment").find(".list").html(html);
+    }
 })

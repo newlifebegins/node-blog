@@ -22,7 +22,7 @@ const conSchema = new Schema({
     content:  String,
     comment: {
         type: Array,
-        default: ''
+        default: []
     }
 });
 module.exports = conSchema;

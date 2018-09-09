@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 // TODO: 引入数据库模型
 const User = require('../models/Users');
+const Content = require('../models/Content');
 // TODO: 定义统一返回格式
 var responseData;
 router.use((req, res, next) => {
@@ -124,4 +125,54 @@ router.get('/user/logout', (req, res, next) => {
     res.json(responseData);
     return;
 });
+/*
+* 评论接口
+**/
+router.post('/content/comment', (req, res, next) => {
+    let id = req.body.id;
+    let username = req.cookies.userInfo.username;
+    let comment = req.body.comment;
+    if(!username) {
+        responseData.code = 1;
+        responseData.message = '用户名不能为空';
+        res.json(responseData);
+        return;
+    }
+    if(!comment) {
+        responseData.code = 2;
+        responseData.message = '内容不能为空';
+        res.json(responseData);
+        return;
+    }
+    Content.findOne({
+        _id: id
+    }).then((conInfo) => {
+        conInfo.comment.push({
+            id: id,
+            username: username,
+            comment: comment
+        })
+        conInfo.save((err) => {
+            if(!err) {
+                responseData.data = conInfo;
+                res.json(responseData);
+                return;
+            }
+        });
+    })
+})
+/*
+* 初始化评论
+**/
+router.get('/show', (req, res, next) => {
+    let id = req.query.id;
+    let username = req.cookies.userInfo.username;
+    Content.findOne({
+        _id: id
+    }).then((conInfo) => {
+        responseData.data = conInfo;
+        res.json(responseData);
+        return;
+    })
+})
 module.exports = router;
