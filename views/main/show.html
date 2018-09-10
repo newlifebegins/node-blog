@@ -14,15 +14,15 @@
     <header>
         <div class="topnav">
             <div class="wp cl">
-                {% if conInfo.user._id %}
-                <div class="l name">{{conInfo.user.username}}您好，欢迎来到我的博客！</div>
+                {% if userInfo._id %}
+                <div class="l name">{{userInfo.username}}您好，欢迎来到我的博客！</div>
                 {% else %}
                 <div class="l name">您好，欢迎来到我的博客！</div>
                 {% endif %}
                 <div class="r">
                     <span class="r_nav">
                         [
-                        {% if conInfo.user._id %}
+                        {% if userInfo._id %}
                         <a rel="nofollow" href="javascript:void(0)" class="logout">退出</a>
                         {% else %}
                         <a rel="nofollow" href="javascript:void(0)" class="login">登录</a>
@@ -37,7 +37,7 @@
                     <span class="r_nav">
                         <a title="收藏本站" href="javascript:;">收藏本站</a>
                     </span>
-                    {% if conInfo.user.isAdmin %}
+                    {% if userInfo.isAdmin %}
                     <span class="pipe">|</span>
                     <span class="r_nav">
                         <a href="/admin" title="进入后台">进入后台</a>

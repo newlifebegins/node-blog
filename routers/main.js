@@ -41,7 +41,8 @@ router.get('/show', (req, res, next) => {
         conInfo.views ++;
         conInfo.save();
         res.render('main/show', {
-            conInfo: conInfo
+            conInfo: conInfo,
+            userInfo: req.cookies.userInfo
         })
     })
 })
