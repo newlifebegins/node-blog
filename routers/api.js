@@ -166,6 +166,7 @@ router.post('/content/comment', (req, res, next) => {
 **/
 router.get('/show', (req, res, next) => {
     let id = req.query.id;
+    let username = req.cookies.userInfo.username;
     Content.findOne({
         _id: id
     }).then((conInfo) => {
