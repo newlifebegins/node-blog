@@ -53,9 +53,11 @@
         </div>
         <nav class="nav">
             <ul class="wp cl">
-                <li><a href="/">首页</a></li>
+                <li class="{% if !category %} active {% endif %}"><a href="/">首页</a></li>
                 {% for cate in cateInfo %}
-                <li><a href="/?category={{cate._id.toString()}}">{{cate.catename}}</a></li>
+                <li class="{% if cate._id.toString() == category %}active{% else %} {% endif %}">
+                    <a href="/?category={{cate._id.toString()}}">{{cate.catename}}</a>
+                </li>
                 {% endfor %}
             </ul>
         </nav>
