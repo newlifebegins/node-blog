@@ -4,6 +4,8 @@ $(document).ready(function() {
     const $login = $("#login");
     const $register = $("#register");
     const $popup = $(".popup");
+    let comment = [];
+    let page = 1;
     $topnav.delegate(".login", "click", (event) => {
         $login.show();
     })
@@ -107,8 +109,9 @@ $(document).ready(function() {
             },
             success: (data) => {
                 var data = data.data.comment.reverse();
+                comment = [...data];
                 $(".comment").find("textarea[name='comment']").val('');
-                renderComment(data);
+                renderComment();
             },
             error: (xhr) => {
                 console.log(xhr);
@@ -125,25 +128,69 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data) => {
             var data = data.data.comment.reverse();
-            renderComment(data)
+            comment = [...data];
+            renderComment();
+            console.log(comment);
         },
         error: (xhr) => {
             console.log(xhr);
         }
     })
-    var renderComment = (data) => {
+    var renderComment = () => {
         var html = '';
-        for(var i = 0; i < data.length; i ++) {
+        let limit = 10;
+        let pages = Math.ceil(comment.length / limit);
+        page = Math.min(page, pages);
+        page = Math.max(page, 1);
+        let start = (page - 1) * limit;
+        let end = Math.min(start + limit, comment.length);
+        let pageHtml = '';
+        for(var i = 0; i < pages; i ++) {
+            pageHtml += `<a href="javascript:;" data-count="${i+1}">${i+1}</a>`
+        }
+        $(".page").html(`<a href="javascript:;" class="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        ${pageHtml}
+                        <a href="javascript:;" class="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                        <span>共 ${pages} 页</span>
+                        `);
+        for(var i = start; i < end; i ++) {
+            let date = format(`${comment[i]['addTime']}`);
             html += `<dl>
                         <dt>
                             <img src="" alt="">
                         </dt>
                         <dd>
-                            <h5 class="name">${data[i]['username']}</h5>
-                            <p>${data[i]['comment']}</p>
+                            <h5 class="name">${comment[i]['username']}<span>${date}</span></h5>
+                            <p>${comment[i]['comment']}</p>
                         </dd>
                     </dl>`
         }
         $(".comment").find(".list").html(html);
     }
+    $(".page").delegate("a", "click", function() {
+        if($(this).hasClass("prev")) {
+            page --;
+            renderComment();
+        } else if($(this).hasClass("next")) {
+            page ++;
+            renderComment();
+        } else {
+            page = Number($(this).attr("data-count"));
+            renderComment();
+        }
+    })
 })
+var format = (time) => {
+    let date = new Date(time) || new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    return `${year}年${month}月${day}日 ${hour}:${min}:${sec}`
+}

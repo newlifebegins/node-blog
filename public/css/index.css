@@ -81,6 +81,7 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .comment .list dt { float: left; width: 42px; height: 42px; border-radius: 50%; background-color: #ccc; }
 .comment .list dd { margin-left: 60px; margin-bottom: 10px; }
 .comment .list dd .name { color: #4398ed; font-size: 12px; }
+.comment .list dd .name span { float: right; color: #999; }
 .comment .list dd p { color: #000; font-size: 12px; }
 .footer{border-top:1px solid #E8E8E8; padding:15px 0;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
 .footer a,.footer a:hover{color:#999}

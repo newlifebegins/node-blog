@@ -150,7 +150,8 @@ router.post('/content/comment', (req, res, next) => {
         conInfo.comment.push({
             id: id,
             username: username,
-            comment: comment
+            comment: comment,
+            addTime: new Date()
         })
         conInfo.save((err) => {
             if(!err) {
