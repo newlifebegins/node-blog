@@ -134,7 +134,15 @@ $(document).ready(function() {
     var renderComment = (data) => {
         var html = '';
         for(var i = 0; i < data.length; i ++) {
-            html += `<dl><dt><img src="" alt=""></dt><dd><h5 class="name">${data[i]['username']}</h5><p>${data[i]['comment']}</p></dd></dl>`
+            html += `<dl>
+                        <dt>
+                            <img src="" alt="">
+                        </dt>
+                        <dd>
+                            <h5 class="name">${data[i]['username']}</h5>
+                            <p>${data[i]['comment']}</p>
+                        </dd>
+                    </dl>`
         }
         $(".comment").find(".list").html(html);
     }
