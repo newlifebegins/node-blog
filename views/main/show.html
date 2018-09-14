@@ -61,11 +61,13 @@
                 </div>
                 <div class="comment">
                     <h1>评论</h1>
+                    {% if userInfo._id %}
                     <form action="" method="post">
                         <input type="hidden" name="contentId" value="{{conInfo._id.toString()}}">
                         <textarea name="comment" rows="8" cols="80" placeholder="写点东西。。。。"></textarea>
                         <input type="submit" name="submit" value="畅言一下">
                     </form>
+                    {% endif %}
                     <h2>最新评论</h2>
                     <div class="list">
                         <dl>
