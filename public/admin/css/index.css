@@ -3,7 +3,7 @@ html,body { background-color: #f4f7f9; }
 .header h1 { position: absolute; top: 0; left: 36px; font-size: 16px; color: #fff; font-weight: bold; margin: 0; line-height: 50px; }
 .header h1 img { position: relative; margin-right: 10px; }
 .header .username { position: absolute; top: 0; right: 36px; color: #fff; font-size: 14px; }
-.header .username i { display: inline-block; width: 28px; height: 28px; border-radius: 50%; background-color: #fff; vertical-align: middle; margin-right: 15px; overflow: hidden; background: url(../images/username.jpg) no-repeat center; }
+.header .username i { display: inline-block; width: 28px; height: 28px; border-radius: 50%; background-color: #fff; vertical-align: middle; margin-right: 15px; overflow: hidden; background: url(../images/username.png) no-repeat center; background-size: contain; }
 .header .username em { display: inline-block; width: 13px; height: 8px; background: url(../images/index_prite.png) no-repeat 0 -39px; vertical-align: middle; margin-left: 10px; }
 .header .navTop { padding-left: 280px; }
 .header .navTop li { display: inline-block; padding: 0 23px; }

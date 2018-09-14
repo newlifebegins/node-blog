@@ -6,7 +6,7 @@ $(document).ready(function(){
         $(this).siblings("ul").slideToggle("slow").toggleClass("on");
         $(this).siblings("ul").hasClass("on") ? $(this).css({"color":"#006cfe"}).find("i").css({"transform":"rotate(-90deg)"}) : $(this).css({"color":"rgba(255,254,254,0.5)"}).find("i").css({"transform":"rotate(0deg)"});
         return false;
-    }).eq(0).trigger("click");
+    }).trigger("click");
     $(".navLeft .btn").on("click",function(){
         $(this).toggleClass("open");
         $(".navLeft").toggleClass("slide_hide");
@@ -101,6 +101,6 @@ $(document).ready(function(){
     $(".navTop>ul").find("a").on("click",function(){
         $(this).parent().addClass("active").siblings().removeClass("active");
         $(".navLeft").find("."+$(this).attr("data-type")).show().siblings("ul").hide();
-    })
+    }).parent().eq(0).find("a").trigger("click");
 
 });
