@@ -57,7 +57,7 @@
                         时间：<span>{{conInfo.addTime|date('Y-m-d h:i:s', -8 * 60)}}</span>
                         阅读量：<span>{{conInfo.views}}</span>
                     </h2>
-                    <p>{{conInfo.content}}</p>
+                    {% autoescape %}{{conInfo.content}}{% endautoescape %}
                 </div>
                 <div class="comment">
                     <h1>评论</h1>

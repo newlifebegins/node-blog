@@ -384,7 +384,7 @@ router.post('/content/edit', (req, res, next) => {
     })
 })
 /*
-* 删除分类
+* 删除内容
 **/
 router.get('/content/delete', (req, res, next) => {
     let id = req.query.id || '';
