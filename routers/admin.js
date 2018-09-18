@@ -261,11 +261,7 @@ router.get('/content/add', (req, res, next) => {
 * 保存新添加的内容
 **/
 router.post('/content/add', (req, res, next) => {
-    let category = req.body.category;
     let user = req.cookies.userInfo._id.toString();
-    let contitle = req.body.contitle;
-    let condesc = req.body.condesc;
-    let content = req.body.content;
     //创建上传表单
     var form = new formidable.IncomingForm();
     //设置编辑
@@ -278,15 +274,17 @@ router.post('/content/add', (req, res, next) => {
     form.maxFieldsSize = 2 * 1024 * 1024;
     // 上传文件的入口文件
     form.parse(req, function(err, fields, files) {
-        console.log(files);
-
+        let category = fields.category;
+        let contitle = fields.contitle;
+        let condesc = fields.condesc;
+        let content = fields.content;
         if (err) {
             console.log(err);
             return;
         }
 
         var extName = '';  //后缀名
-        switch (files.fulAvatar.type) {
+        switch (files.file.type) {
             case 'image/pjpeg':
                 extName = 'jpg';
                 break;
@@ -308,52 +306,59 @@ router.post('/content/add', (req, res, next) => {
 
         var avatarName = Math.random() + '.' + extName;
         var newPath = form.uploadDir + avatarName;
-        fs.renameSync(files.fulAvatar.path, newPath);  //重命名
-    });
-
-    if(!category) {
-        res.render('admin/error', {
-            message: '内容分类不能为空'
-        })
-        return;
-    }
-    if(!contitle) {
-        res.render('admin/error', {
-            message: '内容标题不能为空'
-        })
-        return;
-    }
-    if(!condesc) {
-        res.render('admin/error', {
-            message: '内容简介不能为空'
-        })
-        return;
-    }
-    if(!content) {
-        res.render('admin/error', {
-            message: '内容不能为空'
-        })
-        return;
-    }
-    new Content({
-        category: category,
-        user: user,
-        contitle: contitle,
-        condesc: condesc,
-        content: content
-    }).save((err, newContent) => {
-        if(err) {
+        fs.renameSync(files.file.path, newPath);  //重命名
+        if(!category) {
             res.render('admin/error', {
-                message: '内容保存失败'
-            })
-            return;
-        } else {
-            res.render('admin/success', {
-                message: '内容保存成功'
+                message: '内容分类不能为空'
             })
             return;
         }
-    })
+        if(!contitle) {
+            res.render('admin/error', {
+                message: '内容标题不能为空'
+            })
+            return;
+        }
+        if(!condesc) {
+            res.render('admin/error', {
+                message: '内容简介不能为空'
+            })
+            return;
+        }
+        if(!content) {
+            res.render('admin/error', {
+                message: '内容不能为空'
+            })
+            return;
+        }
+        if(!files.file.path) {
+            res.render('admin/error', {
+                message: '请上传缩略图'
+            })
+            return;
+        }
+        new Content({
+            category: category,
+            user: user,
+            contitle: contitle,
+            condesc: condesc,
+            content: content,
+            avatar: newPath
+        }).save((err, newContent) => {
+            if(err) {
+                res.render('admin/error', {
+                    message: '内容保存失败'
+                })
+                return;
+            } else {
+                res.render('admin/success', {
+                    message: '内容保存成功'
+                })
+                return;
+            }
+        })
+    });
+
 })
 /*
 * 内容修改

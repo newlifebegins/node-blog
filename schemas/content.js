@@ -20,6 +20,7 @@ const conSchema = new Schema({
     contitle: String,
     condesc: String,
     content:  String,
+    avatar: String,
     comment: {
         type: Array,
         default: []

@@ -60,6 +60,7 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .article { width: 800px; padding: 10px; }
 .article dl { border-bottom: 1px solid #E8E8E8; padding: 10px 0; }
 .article dt { float: left; width: 200px; height: 100px; border: 1px solid #E8E8E8; background: #ccc; }
+.article dt img { width: 100%; height: 100%; }
 .article dd { margin-left: 220px; margin-bottom: 10px; }
 .article dd h5 { font-size: 18px; font-weight: 600; }
 .article dd h5>span { float: right; font-size: 14px; color: #ccc; font-weight: normal; }

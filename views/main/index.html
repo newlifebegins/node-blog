@@ -3,7 +3,7 @@
     {% for content in conInfo %}
     <dl class="cl">
         <dt>
-            <img src="" alt="">
+            <img src="{{content.avatar}}" alt="{{content.contitle}}">
         </dt>
         <dd>
             <h5>{{content.contitle}} <span>{{content.addTime|date('Y-m-d h:i:s', -8 * 60)}}</span></h5>
