@@ -75,3 +75,13 @@ views     模板视图文件目录
 app.js    应用(启动)入口文件
 
 package.json
+
+## 项目启动
+
+```
+git clone git@github.com:newlifebegins/node-blog.git
+
+cd node-blog
+
+node app.js 或 nodemon
+```
